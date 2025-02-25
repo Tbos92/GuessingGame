@@ -1,5 +1,5 @@
 let max = parseInt(prompt("Enter the maximum number"));
-while (isNaN(max) || max <= 0) {
+while (!max) {
   max = parseInt(prompt("Enter a vaild number"));
 }
 
@@ -10,15 +10,16 @@ let attempts = 1;
 
 while (parseInt(guess) !== targetNum) {
   if (guess === "q") break;
-
-  attempts++;
+  guess = parseInt(guess);
 
   if (guess > targetNum) {
     guess = prompt("Too high, guess again!");
+    attempts++;
   } else if (guess < targetNum) {
     guess = prompt("Too low, guess again!");
+    attempts++;
   } else {
-    guess = prompt("Invalid input. Please enter a number!");
+    guess = prompt("Invalid input. Please enter a number! Or 'q' to quit.");
     continue;
   }
 }
